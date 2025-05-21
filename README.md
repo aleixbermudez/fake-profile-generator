@@ -49,11 +49,11 @@ python main.py --n 5
 
 ### Available Arguments
 
-| Flag         | Description                                             | Default   |
-|--------------|---------------------------------------------------------|-----------|
-| `--num`      | Number of profiles to generate                          | `1`       |
-| `--locale`   | Faker locale to use (`en_US`, `es_ES`, etc.) (Soon)     | `es_ES`   |
-| `--output`   | Output format: `json` or `csv` (Soon)                   | `json`    |
+| Flag         | Description                                                 | Default   |
+|--------------|-------------------------------------------------------------|-----------|
+| `--n`        | Number of profiles to generate                              | `10`       |
+| `--locale`   | Faker locale to use (`en_US`, `es_ES`, etc.) **(Soon)**     | `es_ES`   |
+| `--output`   | Output format: `json` or `csv` **(Soon)**                   | `json`    |
 
 ---
 
