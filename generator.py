@@ -8,14 +8,16 @@ from faker import Faker
 # Parser for command line arguments
 parser = argparse.ArgumentParser(
     prog="Fake Profile Generator",
-    description="Genera perfiles falsos con fotos."
+    description="Generate fake profiles with images"
 )
 
-parser.add_argument('--n', '--number', type=int, default=10, help='Número de perfiles a generar')
+parser.add_argument('--n', '--number', type=int, default=10, help='Amount of generated profiles')
+parser.add_argument('--l', '--locale', type=str, default="es_ES", help='Language of fake profiles')
+
 args = parser.parse_args()
 
 # Change languane if needed
-fake = Faker('es_ES')
+fake = Faker(args.l)
 
 # Directories for photos and JSON
 photos_dir = 'profiles/photos'
@@ -29,7 +31,7 @@ def default_serializer(obj):
     return str(obj)
 
 # Data dictionary
-data = {}
+data = []
 
 for _ in range(args.n):
     fake_user = {
@@ -41,8 +43,6 @@ for _ in range(args.n):
         'job': fake.job()
     }
 
-    data[fake_user['name']] = fake_user
-
     # Get fake image
     try:
         response = requests.get('https://thispersondoesnotexist.com/', timeout=10)
@@ -50,8 +50,14 @@ for _ in range(args.n):
             filename = os.path.join(photos_dir, f"{fake_user['name'].replace(' ', '_')}.jpg")
             with open(filename, "wb") as fp:
                 fp.write(response.content)
+
+            fake_user["filename"] = filename
+            data.append(fake_user)
+
     except Exception as e:
         print(f"Error al descargar imagen: {e}")
+
+        
 
 # Save JSON data
 os.makedirs("profiles", exist_ok=True)

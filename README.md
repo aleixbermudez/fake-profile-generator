@@ -30,7 +30,7 @@ This project is perfect for developers, designers, educators, and QA engineers w
 Clone this repository and install the dependencies:
 
 ```bash
-git clone https://github.com/yourusername/fake-profile-generator.git
+git clone https://github.com/aleixbermudez/fake-profile-generator.git
 cd fake-profile-generator
 pip install -r requirements.txt
 ```
@@ -44,7 +44,7 @@ Make sure you’re using Python 3.7 or higher.
 You can run the generator from the command line:
 
 ```bash
-python main.py --n 5
+python generator.py --n 5
 ```
 
 ### Available Arguments
@@ -63,7 +63,6 @@ Once you run the tool, a `/profiles/` directory is created automatically:
 
 ```
 fake-profile-generator/
-├── main.py
 ├── generator.py
 ├── profiles/
 │   ├── data.json
